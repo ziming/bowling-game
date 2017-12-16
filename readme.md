@@ -37,6 +37,15 @@ phpunit
 phpunit --testdox
 ```
 
+## Main Files Location
+
+```
+app/Console/Commands/PlayGame.php
+app/BowlingGame.php
+tests/Features/SetInputFramesTest.php
+tests/Features/ViewScoreHistoryTest.php
+```
+
 ## Requirements
 This test is to write a program for a ten-pin bowling game.
 
