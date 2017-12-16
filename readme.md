@@ -1,58 +1,87 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# Bowling Game Test
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## References
 
-## About Laravel
+https://github.com/laracasts/Code-Katas-in-PHP/tree/master/bowling-game
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+## Misc. Useful Resources on Controller, REST URI Design (Not used)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Cruddy By Design
+https://www.youtube.com/watch?v=MF0jFKvS4SI
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications.
+https://github.com/adamwathan/laracon2017
 
-## Learning Laravel
+https://apisyouwonthate.com/
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework, making it a breeze to get started learning the framework.
+## Setup
+- Just make sure PHP 7 is installed. 
+- To be safe be on PHP 7.1.12 or above since that's the version on my machine
+- Make sure composer is installed and run `composer install` in project directory
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 1100 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+## Example Commands
 
-## Laravel Sponsors
+```
+php artisan bowling:play "[[5,2],[8,1],[6,4],[10],[0,5],[2,6],[8,1],[5,3],[6,1],[10,2,6]]"
+php artisan bowling:play "[[10],[10],[10],[10],[10],[10],[10],[10],[10],[10,10,10]]"
+php artisan bowling:play "[[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1],[1,1]]"
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
+php artisan help bowling:play
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Pulse Storm](http://www.pulsestorm.net/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
+```
 
-## Contributing
+## Running the tests
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+```
+phpunit
 
-## Security Vulnerabilities
+phpunit --testdox
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Requirements
+This test is to write a program for a ten-pin bowling game.
 
-## License
+A bowler has ten frames to knock down pins. In each of 1 to 9 frames, the bowler makes 1 or 2 throws while the tenth 
+frame has up to three throws.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+You program should be able to receive an array of arrays of pins knocked down by each throw as an
+input. Each number should always be an integer between 0 and 10. Each sub-array represents one
+frame of a game.
+
+The basic rules of this bowling game are:
+
+- No additional score for a spare.
+
+-  If a bowler knocks down all ten pins on the first throw, it’s a strike. A strike is worth 10, plus
+the score in the next frame if the next frame is not a strike. If the next frame is also a strike,
+which means the bowler has made two strikes, then the score from the third frame is also
+added to the first frame.
+
+Ex. 10 (first frame) +10 (second frame) +10 (third frame) results in the first frame with a score
+of 30.
+
+Ex. 10 (first frame) +6 (second frame) results in the first frame with a score of 16.
+
+- If a strike is not made in a frame, the score of the frame is just the sum of pins knocked
+down.
+
+- The last frame has up to three throws. If a bowler had a strike on the first throw, the bowler is
+allowed to have one additional throw. So the bowler has three throws in total. If the bowler
+made two strikes he will still be able to do the last throw
+
+Your program should display a list of integers representing the total scores at the end of each frame.
+
+Example:
+
+Input: [[5,2],[8,1],[6,4],[10],[0,5],[2,6],[8,1],[5,3],[6,1],[10,2,6]]
+Output: [7, 16, 26, 41, 46, 54, 63, 71, 78, 96]
+
+What we are interested in:
+
+- How you design classes and methods.
+- How you test.
+- How you handle unexpected behaviour such as invalid input, e.g what would happen if the input was not an array of array.
+
+As long as the above basic rules of this bowling games are followed, the functionality is ok even if it
+differs from typical rules of a bowling game.
+
+The game should be run via the commandline in Laravel 5.3 or above.

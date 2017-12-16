@@ -12,3 +12,5 @@ yarn-error.log
 .env
 .ide_helper.php
 .phpstorm.meta.php
+.php_cs.cache
+scratch.md
