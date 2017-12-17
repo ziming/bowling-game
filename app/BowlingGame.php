@@ -115,15 +115,17 @@ class BowlingGame extends Model
                 if (array_sum($frame) > 10) {
                     throw new InvalidArgumentException("Each frame sum before the last shouldn't exceed 10");
                 }
-            } else {
-                if (count($frame) > 3) {
-                    throw new InvalidArgumentException('The final frame (10th) cannot exceed 3 rolls');
-                }
-
-                if (!in_array(10, $frame) && count($frame) > 2) {
-                    throw new InvalidArgumentException('The final frame (10th) cannot exceed 2 rolls without at least 1 strike');
-                }
             }
+
+            // else part ($frame === $lastFrame)
+            if (count($frame) > 3) {
+                throw new InvalidArgumentException('The final frame (10th) cannot exceed 3 rolls');
+            }
+
+            if (!in_array(10, $frame) && count($frame) > 2) {
+                throw new InvalidArgumentException('The final frame (10th) cannot exceed 2 rolls without at least 1 strike');
+            }
+
         }
     }
 }
