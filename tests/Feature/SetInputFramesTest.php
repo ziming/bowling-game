@@ -72,7 +72,7 @@ class SetInputFramesTest extends TestCase
         $this->inputFrames[rand(0, 8)] = [2, 7, 1];
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('1st to 9th frame cannot exceed 2 rolls');
+        $this->expectExceptionMessage('Non final frame cannot exceed 2 rolls');
         $this->bowlingGame->setInputFrames($this->inputFrames);
     }
 
@@ -81,7 +81,7 @@ class SetInputFramesTest extends TestCase
         $this->inputFrames[count($this->inputFrames) - 1] = [10, 2, 6, 5];
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('The final frame (10th) cannot exceed 3 rolls');
+        $this->expectExceptionMessage('The final frame cannot exceed 3 rolls');
 
 
         $this->bowlingGame->setInputFrames($this->inputFrames);
@@ -111,7 +111,7 @@ class SetInputFramesTest extends TestCase
         $this->inputFrames[9] = [2, 7, 1];
 
         $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('The final frame (10th) cannot exceed 2 rolls without at least 1 strike');
+        $this->expectExceptionMessage('The final frame cannot exceed 2 rolls without at least 1 strike');
 
         $this->bowlingGame->setInputFrames($this->inputFrames);
 
