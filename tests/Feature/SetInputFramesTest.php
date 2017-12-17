@@ -107,6 +107,17 @@ class SetInputFramesTest extends TestCase
         $this->bowlingGame->setInputFrames($this->inputFrames);
     }
 
+    public function test_fail_if_last_frame_has_more_than_2_rolls_when_there_is_no_strike() {
+        $this->inputFrames[9] = [2, 7, 1];
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('The final frame (10th) cannot exceed 2 rolls without at least 1 strike');
+
+        $this->bowlingGame->setInputFrames($this->inputFrames);
+
+
+    }
+
 
 
 }

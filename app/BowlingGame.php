@@ -122,7 +122,7 @@ class BowlingGame extends Model
                 throw new InvalidArgumentException('The final frame (10th) cannot exceed 3 rolls');
             }
 
-            if (!in_array(10, $frame) && count($frame) > 2) {
+            if ($frame[0] !== 10 && count($frame) > 2) {
                 throw new InvalidArgumentException('The final frame (10th) cannot exceed 2 rolls without at least 1 strike');
             }
 
