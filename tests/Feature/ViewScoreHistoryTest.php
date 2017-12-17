@@ -92,16 +92,4 @@ class ViewScoreHistoryTest extends TestCase
         $this->assertEquals($expectedScoreHistory, $actualScoreHistory);
     }
 
-
-    private function getInputFramesDefault(): array
-    {
-        // note: copy and pasted from the other test class.
-        return [[5, 2], [8, 1], [6, 4], [10], [0, 5], [2, 6], [8, 1], [5, 3], [6, 1], [10, 2, 6]];
-    }
-
-    private function setInputFramesDefault()
-    {
-        // note: copy and pasted from the other test class.
-        $this->inputFrames = $this->getInputFramesDefault();
-    }
 }
