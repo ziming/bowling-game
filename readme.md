@@ -84,12 +84,6 @@ Example:
 Input: [[5,2],[8,1],[6,4],[10],[0,5],[2,6],[8,1],[5,3],[6,1],[10,2,6]]
 Output: [7, 16, 26, 41, 46, 54, 63, 71, 78, 96]
 
-What we are interested in:
-
-- How you design classes and methods.
-- How you test.
-- How you handle unexpected behaviour such as invalid input, e.g what would happen if the input was not an array of array.
-
 As long as the above basic rules of this bowling games are followed, the functionality is ok even if it
 differs from typical rules of a bowling game.
 
