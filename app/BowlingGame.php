@@ -85,8 +85,8 @@ class BowlingGame extends Model
         // we can split each check to a different private method if it gets too huge and unmaintainable later.
         // We may be able to use Laravel Validators here but decided not to.
 
-        if (count($frames) !== 10) {
-            throw new InvalidArgumentException('At least 10 input frames required');
+        if (count($frames) !== self::FRAMES_PER_GAME) {
+            throw new InvalidArgumentException('At least ' . self::FRAMES_PER_GAME . ' input frames required');
         }
 
         $lastFrame = end($frames);
