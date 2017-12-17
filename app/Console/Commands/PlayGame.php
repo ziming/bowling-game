@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\BowlingGame;
+use Exception;
 use Illuminate\Console\Command;
 
 class PlayGame extends Command
@@ -41,16 +42,26 @@ class PlayGame extends Command
     {
         $this->info('Welcome to Console Bowling Game!');
         $this->info('Taking your input to return your score history!');
-
+        $this->info('If any error or exception occurs please fix your argument and run the command again');
         $inputFrames = $this->argument('frames');
 
-        $inputFrames = json_decode($inputFrames);
+        try {
 
-        $scoreHistory = (new BowlingGame)->setInputFrames($inputFrames)->getScoreHistory();
+            $inputFrames = json_decode($inputFrames);
 
-        $scoreHistory = json_encode($scoreHistory);
+            $scoreHistory = (new BowlingGame)->setInputFrames($inputFrames)->getScoreHistory();
 
-        $this->info("The Score History is: {$scoreHistory}");
+
+            $scoreHistory = json_encode($scoreHistory);
+
+            $this->info("The Score History is: {$scoreHistory}");
+
+        } catch (Exception $e) {
+            $exceptionClass = get_class($e);
+            $this->warn("{$exceptionClass}: {$e->getMessage()}"); // error returns red box hard to see.
+            $this->info('Try to fix your argument and run the command again.');
+        }
+
 
     }
 }
