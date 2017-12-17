@@ -25,7 +25,7 @@ class SetInputFramesTest extends TestCase
         $this->setInputFramesDefault();
     }
 
-    public function test_set_input_frames_fail_if_not_10_frames()
+    public function test_fail_if_not_10_frames()
     {
         $frames = array_slice($this->inputFrames, 0, rand(1, 9));
 
@@ -35,7 +35,7 @@ class SetInputFramesTest extends TestCase
         $this->bowlingGame->setInputFrames($frames);
     }
 
-    public function test_set_input_frame_fail_if_1_frame_is_not_array()
+    public function test_fail_if_1_frame_is_not_array()
     {
         $this->inputFrames[array_rand($this->inputFrames)] = 'Hello';
 
@@ -45,7 +45,7 @@ class SetInputFramesTest extends TestCase
         $this->bowlingGame->setInputFrames($this->inputFrames);
     }
 
-    public function test_set_input_frame_fail_if_a_frame_value_is_not_an_int_between_0_to_10_inclusive()
+    public function test_fail_if_a_frame_value_is_not_an_int_between_0_to_10_inclusive()
     {
 
         // test above 10
@@ -67,7 +67,7 @@ class SetInputFramesTest extends TestCase
         $this->bowlingGame->setInputFrames($this->inputFrames);
     }
 
-    public function test_set_input_frame_fail_if_1st_to_9th_frame_has_more_than_2_throws()
+    public function test_fail_if_1st_to_9th_frame_has_more_than_2_throws()
     {
         $this->inputFrames[rand(0, 8)] = [2, 7, 1];
 
@@ -76,7 +76,7 @@ class SetInputFramesTest extends TestCase
         $this->bowlingGame->setInputFrames($this->inputFrames);
     }
 
-    public function test_set_input_frame_fail_if_last_frame_has_more_than_3_throws()
+    public function test_fail_if_last_frame_has_more_than_3_throws()
     {
         $this->inputFrames[count($this->inputFrames) - 1] = [10, 2, 6, 5];
 
@@ -87,7 +87,7 @@ class SetInputFramesTest extends TestCase
         $this->bowlingGame->setInputFrames($this->inputFrames);
     }
 
-    public function test_set_input_frame_fail_if_frame_rolls_is_more_than_1_when_there_is_a_strike_before_last_frame()
+    public function test_fail_if_frame_rolls_is_more_than_1_when_there_is_a_strike_before_last_frame()
     {
         $this->inputFrames[rand(0, 8)] = [10, 0];
 
@@ -97,7 +97,7 @@ class SetInputFramesTest extends TestCase
         $this->bowlingGame->setInputFrames($this->inputFrames);
     }
 
-    public function test_set_input_frame_fail_if_non_last_frame_sum_is_more_than_10()
+    public function test_fail_if_non_last_frame_sum_is_more_than_10()
     {
         $this->inputFrames[rand(0, 8)] = [2, 9];
 

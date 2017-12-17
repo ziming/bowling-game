@@ -24,7 +24,7 @@ class ViewScoreHistoryTest extends TestCase
         $this->setInputFramesDefault();
     }
 
-    public function test_all_score_history_entries_are_0_for_gutter_game()
+    public function test_all_entries_are_0_for_gutter_game()
     {
         $frames = array_fill(0, BowlingGame::FRAMES_PER_GAME, [0, 0]);
 
@@ -35,7 +35,7 @@ class ViewScoreHistoryTest extends TestCase
         $this->assertEquals($expectedArray, $this->bowlingGame->getScoreHistory());
     }
 
-    public function test_score_history_correct_when_no_frames_has_strike_nor_spare()
+    public function test_correct_when_no_frames_has_strike_nor_spare()
     {
         $frames = [];
         $expectedScoreHistory = [];
@@ -56,7 +56,7 @@ class ViewScoreHistoryTest extends TestCase
         $this->assertEquals($expectedScoreHistory, $this->bowlingGame->getScoreHistory());
     }
 
-    public function test_score_history_correct_with_question_input_and_expected_output()
+    public function test_correct_with_question_input_and_expected_output()
     {
         $this->bowlingGame->setInputFrames($this->inputFrames);
 
@@ -64,7 +64,7 @@ class ViewScoreHistoryTest extends TestCase
         $this->assertEquals($expectedOutput, $this->bowlingGame->getScoreHistory());
     }
 
-    public function test_score_history_final_score_is_300_in_a_perfect_game()
+    public function test_final_score_is_300_in_a_perfect_game()
     {
         $frames = array_fill(0, BowlingGame::FRAMES_PER_GAME - 1, [10]);
 
@@ -79,7 +79,7 @@ class ViewScoreHistoryTest extends TestCase
         $this->assertEquals($expectedScoreHistory, $actualScoreHistory);
     }
 
-    public function test_score_history_final_score_is_20_when_all_i_rolled_is_1()
+    public function test_final_score_is_20_when_all_i_rolled_is_1()
     {
         $frames = array_fill(0, BowlingGame::FRAMES_PER_GAME, [1, 1]);
 
