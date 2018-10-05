@@ -1,9 +1,5 @@
 # Bowling Game Test
 
-## References
-
-https://github.com/laracasts/Code-Katas-in-PHP/tree/master/bowling-game
-
 ## Setup
 - Just make sure PHP 7 is installed. 
 - To be safe be on PHP 7.1.12 or above since that's the version on my machine
