@@ -4,15 +4,6 @@
 
 https://github.com/laracasts/Code-Katas-in-PHP/tree/master/bowling-game
 
-## Misc. Useful Resources on Controller, REST URI Design (Not used)
-
-### Cruddy By Design
-https://www.youtube.com/watch?v=MF0jFKvS4SI
-
-https://github.com/adamwathan/laracon2017
-
-https://apisyouwonthate.com/
-
 ## Setup
 - Just make sure PHP 7 is installed. 
 - To be safe be on PHP 7.1.12 or above since that's the version on my machine
@@ -86,5 +77,3 @@ Output: [7, 16, 26, 41, 46, 54, 63, 71, 78, 96]
 
 As long as the above basic rules of this bowling games are followed, the functionality is ok even if it
 differs from typical rules of a bowling game.
-
-The game should be run via the commandline in Laravel 5.3 or above.
